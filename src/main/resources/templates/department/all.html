@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <title>Departments</title>
+    <link th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div id="header">
+    <h1>Departments</h1>
+</div>
+
+<form>
+    <p>
+        <a th:href="@{/}">Home</a>
+    </p>
+    <p>
+        <a href="#" th:href="@{avgsalary}">Avg salary by Department</a>
+    </p>
+    <p>
+        <a th:href="@{create}" >Add new Department</a>
+    </p>
+</form>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>EDIT</th>
+        <th>DELETE</th>
+    </tr>
+    <tr th:each="department:${all}" >
+        <td>
+            <span th:text="${department.id}" ></span>
+        </td>
+        <td>
+            <span th:text="${department.name}" ></span>
+        </td>
+        <td>
+            <a th:href="@{edit(id = ${department.id})}" >
+                Edit
+            </a>
+        </td>
+        <td>
+            <a th:href="@{delete(id = ${department.id})}">
+                Delete
+            </a>
+        </td>
+    </tr>
+</table>
+
+<footer>
+</footer>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <title>Departments</title>
+    <link th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+<h1>Departments Average Salary</h1>
+
+<form>
+    <a th:href="@{all}">Department</a>
+</form>
+
+<table>
+    <tr>
+        <th>NAME</th>
+        <th>AVG SALARY</th>
+    </tr>
+    <tr th:each="depatrmentaveragesalary:${avgsalary}">
+        <td><span th:text="${depatrmentaveragesalary.departmentName}"></span></td>
+        <td><span th:text="${depatrmentaveragesalary.avgSalary}"></span></td>
+    </tr>
+</table>
+
+</body>
+</html>

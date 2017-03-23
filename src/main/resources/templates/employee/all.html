@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <title>Employees</title>
+    <link th:href="@{/css/style.css}"/>
+</head>
+<body>
+<div id="header">
+    <h1>Employees</h1>
+</div>
+
+<form>
+    <p>
+        <a th:href="@{/}">Home</a>
+    </p>
+    <p>
+        <a th:href="@{create}" >Add new Employee</a>
+    </p>
+</form>
+
+<form th:each="e:${all}" >
+<table>
+    <tr>
+        <th>ID</th>
+        <th>LONG NAME</th>
+        <th>MIDDLE NAME</th>
+        <th>SHORT NAME</th>
+        <th>DATE</th>
+        <th>SALARY</th>
+        <th>DEPARTMENT</th>
+    </tr>
+    <tr>
+        <td>
+            <span th:text="${e.id}" ></span>
+        </td>
+        <td>
+            <span th:text="${e.lName}" ></span>
+        </td>
+        <td>
+            <span th:text="${e.mName}" ></span>
+        </td>
+        <td>
+            <span th:text="${e.sName}" ></span>
+        </td>
+        <td>
+            <span th:text="${e.date}" ></span>
+        </td>
+        <td>
+            <span th:text="${e.salary}" ></span>
+        </td>
+        <td>
+            <span th:text="${e.department}" ></span>
+        </td>
+        <td>
+            <a th:href="@{edit(id = ${e.id})}" >
+                Edit
+            </a>
+        </td>
+        <td>
+            <a th:href="@{delete(id = ${e.id})}">
+                Delete
+            </a>
+        </td>
+    </tr>
+</table>
+</form>
+
+<form th:action="@{findByDateRange}">
+    <td>
+        <input name="earlyDate" th:text="*{earlyDate}" />
+    </td>
+    <td>
+        <input name="oldDate" th:text="*{oldDate}" />
+    </td>
+    <td>
+        <input value="FIND" type="submit"/>
+    </td>
+    <td>
+        <a th:href="@{all}">Refresh employee list</a>
+    </td>
+</form>
+
+<footer>
+</footer>
+</body>
+</html>
