@@ -24,9 +24,10 @@ public class DepartmentService {
         model.addAttribute("department", new Department());
     }
 
-    public void readAll(ModelMap modelMap){
+    public ModelMap readAll(ModelMap modelMap){
         Department[] dep = rest.getForObject("http://localhost:9000/department/all", Department[].class);
         modelMap.put("all", dep);
+        return modelMap;
     }
 
     public void save(int id, String name){
